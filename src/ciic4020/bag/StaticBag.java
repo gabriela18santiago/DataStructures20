@@ -114,9 +114,9 @@ public class StaticBag implements Bag {
 	public Bag moreFrequentThan(Object obj) {
 		Bag newBag = new StaticBag(this.size());
 		int count = this.count(obj);
-		for(int i = 0; i<this.size();i++) {
-			if(this.count(this.elements[i]) > count && !newBag.isMember(this.elements[i])){
-				newBag.add(obj);
+		for(Object i : this) {
+			if(this.count(i) > count && !newBag.isMember(i)){
+				newBag.add(i);
 			}
 		}
 		return newBag;

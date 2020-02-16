@@ -16,6 +16,11 @@ public class DynamicSet<E> implements Set<E> {
 		this.theSet = new StaticSet<E>(initialCapacity);
 		this.maxCapacity = initialCapacity;
 	}
+
+	public static boolean checkDisjoint(Set<Integer>[] sets) {
+		return false;
+	}
+
 	@Override
 	public Iterator<E> iterator() {
 		return theSet.iterator();
@@ -93,5 +98,27 @@ public class DynamicSet<E> implements Set<E> {
 	public boolean isSubSet(Set<E> S2) {
 		return this.theSet.isSubSet(S2);
 	}
+
+	@Override
+	public boolean equals(Set<E> S2) {
+		return theSet.equals(S2);
+	}
+
+	@Override
+	public Set<Set<E>> singletonSets() {
+		return theSet.singletonSets();
+	}
+
+	public static boolean checkDisjoint (Object[] sets){
+		for(int i = 0; i < sets.length-1; i++){
+			for(int j = i+1; j < sets.length; j++) {
+				if (((DynamicSet) sets[i]).intersection((DynamicSet) sets[j]).isEmpty()) {
+					return true;
+				}
+			}
+		}
+		return false;
+	}
+
 
 }

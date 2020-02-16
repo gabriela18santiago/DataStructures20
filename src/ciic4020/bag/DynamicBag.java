@@ -75,8 +75,7 @@ public class DynamicBag implements Bag {
 
 	@Override
 	public Bag moreFrequentThan(Object obj) {
-	
-		return null;
+		return bag.moreFrequentThan(obj);
 	}
 
 }
